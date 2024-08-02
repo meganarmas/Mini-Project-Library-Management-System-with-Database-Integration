@@ -1,7 +1,5 @@
 from Modules.class_books import Def_Books
 
-f = open('book_list.txt', 'r')
-
 books_def = Def_Books
 
 books = []
