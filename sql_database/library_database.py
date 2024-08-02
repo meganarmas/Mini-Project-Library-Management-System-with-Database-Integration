@@ -6,7 +6,7 @@ def connect_database():
     db_name = "LibraryMangement"
     user = "root"
     password = "*****"
-    host = "local_library"
+    host = "localhost"
 
     try:
         conn = mysql.connector.connect(
@@ -17,11 +17,7 @@ def connect_database():
         )
         if conn.is_connected():
             print("Connected to MySQL database successfully.")
+            return conn
 
     except Error as e:
         print(f"Error: {e}")
-
-    finally:
-        if conn and conn.is_connected():
-            conn.close()
-            print("My SQL connection is closed.")

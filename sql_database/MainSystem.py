@@ -1,7 +1,9 @@
-from Modules.user_operations import user_op_menu
-from Modules.authors_op import authors_menu
-from Modules.books_op import book_menu
-from Modules.genres_op import genre_main
+from book_op import book_menu
+from authors_op import authors_menu
+from genre_op import genre_main
+from users_op import user_op_menu
+
+from library_database import connect_database
 
 
 class LibraryManagement():

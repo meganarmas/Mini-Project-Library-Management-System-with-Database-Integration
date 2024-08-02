@@ -1,4 +1,4 @@
-from Modules.class_authors import Authors_Class
+from sql_database.class_authors import Authors_Class
 
 author_class = Authors_Class
 

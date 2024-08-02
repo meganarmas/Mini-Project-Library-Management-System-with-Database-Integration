@@ -1,7 +1,6 @@
-from Modules.class_genres import Genre_Class
+from class_genres import Genre_Class
 
 from library_database import connect_database
-import Error
 
 conn = connect_database()
 
@@ -31,12 +30,17 @@ def add_new_genre():
     if conn is not None:
         try:
             cursor = conn.cursor()
-            query = "INSERT INTO genres (name, description, category) VALUES (%s, %s, %s)", name, description, category
-            cursor.commit(query)
+            name = input("Enter the new genre's name: ")
+            description = input ("Enter the description: ") 
+            category = input("Enter the genre category: ")
+            new_genre = (name, description, category)
+            query = "INSERT INTO genres (name, description, category) VALUES (%s, %s, %s)"
+            cursor.execute(query, new_genre)
+            conn.commit()
             print("New genre added to the system.")
         
-        except Error as e:
-            print(f"Error: {e}")
+        except Exception as e:
+            print(f"Error {e}")
         
         finally:
             cursor.close()
@@ -48,11 +52,12 @@ def view_genres():
             cursor = conn.cursor()
             query = "SELECT * FROM genres"
             cursor.execute(query)
+            conn.commit()
             for row in cursor.fetchone():
                 print(row)
         
-        except Error as e:
-            print(f"Error: {e}")
+        except Exception as e:
+            print(f"Error {e}")
         
         finally:
             cursor.close()
@@ -65,11 +70,12 @@ def display_genres():
             cursor = conn.cursor()
             query = "insert here"
             cursor.execute(query)
+            conn.commit()
             for row in cursor.fetchall():
                 print(row)
         
-        except Error as e:
-            print(f"Error: {e}")
+        except Exception as e:
+            print(f"Error {e}")
         
         finally:
             cursor.close()

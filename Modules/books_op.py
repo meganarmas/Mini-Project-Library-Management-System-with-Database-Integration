@@ -1,4 +1,4 @@
-from Modules.class_books import Def_Books
+from sql_database.class_books import Def_Books
 
 books_def = Def_Books
 

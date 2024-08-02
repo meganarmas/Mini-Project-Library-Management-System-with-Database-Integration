@@ -1,11 +1,10 @@
-from Modules.class_authors import Authors_Class
+from class_authors import Authors_Class
 
 author_class = Authors_Class
 
 authors = []
 
 from library_database import connect_database
-import Error
 
 conn = connect_database()
 
@@ -28,14 +27,21 @@ def authors_menu():
 
 def add_new_author():
     if conn is not None:
+        print("testing, at author menu")    
         try:
             cursor = conn.cursor()
-            query = "INSERT INTO authors (name, biography) VALUES (%s, %s)", name, biography
-            cursor.commit(query)
+            name = input("Enter the author's name: ")
+            biography = input("Enter the author's biography: ")
+            author_added = (name, biography)
+            print(author_added)
+            query = "INSERT INTO authors (name, biography) VALUES (%s, %s)"
+            print("Test")
+            cursor.execute(query, author_added)
+            conn.commit()
             print("New author added to SQL.")
         
-        except Error as e:
-            print(f"Error: {e}")
+        except Exception as e:
+            print(f"Error {e}.")
         
         finally:
             cursor.close()
@@ -47,11 +53,12 @@ def view_details():
             cursor = conn.cursor()
             query = "SELECT * FROM users WHERE id = %s"
             cursor.execute(query)
+            conn.commit()
             for row in cursor.fetchone():
                 print(row)
         
-        except Error as e:
-            print(f"Error: {e}")
+        except Exception as e:
+            print(f"Error {e}")
         
         finally:
             cursor.close()
@@ -63,11 +70,12 @@ def display_authors():
             cursor = conn.cursor()
             query = "SELECT * FROM authors"
             cursor.execute(query)
+            conn.commit()
             for row in cursor.fetchall():
                 print(row)
         
-        except Error as e:
-            print(f"Error: {e}")
+        except Exception as e:
+            print(f"Error {e}")
         
         finally:
             cursor.close()

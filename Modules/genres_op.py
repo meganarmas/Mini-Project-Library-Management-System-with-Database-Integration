@@ -1,4 +1,4 @@
-from Modules.class_genres import Genre_Class
+from sql_database.class_genres import Genre_Class
 
 genre_class = Genre_Class
 

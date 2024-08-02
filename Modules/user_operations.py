@@ -1,4 +1,4 @@
-from Modules.class_users import UserClass
+from sql_database.class_users import UserClass
 
 users = []
 
