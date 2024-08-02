@@ -39,7 +39,7 @@ def add_book():
     if conn is not None:
         try:
             cursor = conn.cursor()
-            query = "INSERT INTO books (title, author, isbn) VALUES (%s, %s)", title, author, isbn
+            query = "INSERT INTO books (title, author, isbn, publication_date) VALUES (%s, %s, %s)", title, author, isbn, publication_date
             cursor.commit(query)
             print("New book added to the library.")
         

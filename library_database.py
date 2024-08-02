@@ -6,7 +6,7 @@ def connect_database():
     db_name = "LibraryMangement"
     user = "root"
     password = "*****"
-    host = "localhost"
+    host = "local_library"
 
     try:
         conn = mysql.connector.connect(
